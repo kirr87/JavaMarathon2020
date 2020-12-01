@@ -9,7 +9,6 @@ public class Task3 {
         int a = scanner.nextInt();
         int b = scanner.nextInt();
 
-
         if (a >= b) {
             System.out.println("Некорректный ввод");
         } else {
