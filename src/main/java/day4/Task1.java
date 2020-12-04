@@ -16,9 +16,6 @@ public class Task1 {
 
         for (int i = 0; i < n; i++) {
             array[i] = (int) (Math.random() * 10);
-        }
-
-        for (int i = 0; i < array.length; i++) {
             sum += array[i];
             if (array[i] > 8) {
                 numberMoreEight++;
@@ -28,7 +25,7 @@ public class Task1 {
 
             if (array[i] % 2 == 0) {
                 numberEven++;
-            } else if (array[i] % 2 == 1) {
+            } else {
                 numberOdd++;
             }
             System.out.print(array[i] + " ");
