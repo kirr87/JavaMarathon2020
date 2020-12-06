@@ -39,12 +39,14 @@ public class Airplane {
     }
 
     public void fillUp(int fuel) {
-        int tank = this.fuel;
-        this.fuel += fuel;
-
-        if (this.fuel > fuelTank) {
-            this.fuel = fuelTank;
-            System.out.println("Бак полностью заправлен. Заправленно: " + (fuelTank - tank));
-        }
+        if (this.fuel > 0) {
+            this.fuel += fuel;
+            if (this.fuel > fuelTank) {
+                System.out.println("Дозаправленно: " + (Math.abs((this.fuel - fuelTank) - fuel)) + ". Бак полностью заправлен.");
+                this.fuel = fuelTank;
+            } else if (this.fuel == fuelTank) {
+                System.out.println("Дозаправленно: " + fuelTank + ". Бак полностью заправлен.");
+            } else System.out.println("Дозаправленно: " + fuel);
+        } else this.fuel = fuel;
     }
 }
