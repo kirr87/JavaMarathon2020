@@ -8,13 +8,10 @@ public class Task2 {
         List<Integer> number = new ArrayList<Integer>();
 
         for (int i = 0; i <= 350; i++) {
-            if (i <= 30 && i % 2 == 0) {
-                number.add(i);
-            } else if (i >= 300 && i % 2 == 0) {
+            if (i <= 30 && i % 2 == 0 || i >= 300 && i % 2 == 0) {
                 number.add(i);
             }
         }
-
         System.out.println(number);
     }
 }
