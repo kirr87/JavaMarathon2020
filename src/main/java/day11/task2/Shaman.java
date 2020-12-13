@@ -1,83 +1,48 @@
 package day11.task2;
 
 public class Shaman extends Hero implements PhysAttack, MagicAttack, Healer {
-    private double physDef;
-    private double magicDef;
-    private int physAtt;
-    private int magicAtt;
-    private int Health;
+    private int healHimself;
+    private int healTeammate;
 
     public Shaman() {
-        this.physDef = 20;
-        this.magicDef = 20;
-        this.physAtt = 10;
-        this.magicAtt = 15;
-        this.Health = 100;
+        super();
+        setPhysDef(0.2);
+        setMagicDef(0.2);
+        setPhysAtt(10);
+        setMagicAtt(15);
+        this.healHimself = 50;
+        this.healTeammate = 30;
     }
 
-    @Override
     public void healHimself() {
-        if ((Health + 50) > 100) {
-            Health = 100;
+        if ((getHealth() + healHimself) > 100) {
+            setHealth(100);
         } else
-            setHealth(Health + 50);
+            setHealth(getHealth() + healHimself);
     }
 
     @Override
     public void healTeammate(Hero hero) {
-        if (hero.getHealth() + 30 > 100) {
+        if (hero.getHealth() + healTeammate > 100) {
             hero.setHealth(100);
         } else
-            hero.setHealth(hero.getHealth() + 30);
+            hero.setHealth(hero.getHealth() + healTeammate);
     }
 
     @Override
     public String toString() {
         return "Shaman{" +
-                "Health=" + Health +
+                "Health=" + getHealth() +
                 '}';
     }
 
-    @Override
     public void magicalAttack(Hero hero) {
         if (hero.getMagicDef() == 0) {
-            hero.setHealth(hero.getHealth() - magicAtt);
-        } else hero.setHealth((int) (hero.getHealth() - ((1 - hero.getMagicDef()) * magicAtt)));
+            hero.setHealth(hero.getHealth() - getMagicAtt());
+        } else hero.setHealth((int) (hero.getHealth() - ((1 - hero.getMagicDef()) * getMagicAtt())));
 
         if (hero.getHealth() < 0) {
             hero.setHealth(0);
         }
-    }
-
-    @Override
-    public void physicalAttack(Hero hero) {
-        if (hero.getPhysDef() == 0) {
-            hero.setHealth(hero.getHealth() - physAtt);
-        } else
-            hero.setHealth((int) (hero.getHealth() - ((1 - hero.getPhysDef()) * physAtt)));
-
-        if (hero.getHealth() < 0) {
-            hero.setHealth(0);
-        }
-    }
-
-    @Override
-    public double getMagicDef() {
-        return magicDef;
-    }
-
-    @Override
-    public double getPhysDef() {
-        return physDef;
-    }
-
-    @Override
-    public void setHealth(int health) {
-        this.Health = health;
-    }
-
-    @Override
-    public int getHealth() {
-        return Health;
     }
 }

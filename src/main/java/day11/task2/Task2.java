@@ -20,6 +20,8 @@ public class Task2 {
         paladin.healHimself();
         System.out.println(paladin.toString());
 
+
+
         for (int i = 0; i < 5; i++){
             warior.physicalAttack(magocian);
             System.out.println(magocian.toString());

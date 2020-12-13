@@ -1,24 +1,25 @@
 package day11.task2;
 
 public class Paladin extends Hero implements Healer, PhysAttack {
-    private double physDef;
-    private double magicDef;
-    private int physAtt;
-    private int Health;
+    private int healHimself;
+    private int healTeammate;
 
     public Paladin() {
-        this.physDef = 0.5;
-        this.magicDef = 0.2;
-        this.physAtt = 15;
-        this.Health = 100;
+        super();
+        setPhysDef(0.5);
+        setMagicDef(0.2);
+        setPhysAtt(15);
+        setMagicAtt(0);
+        this.healHimself = 25;
+        this.healTeammate = 10;
     }
 
     @Override
     public void healHimself() {
-        if ((Health + 25) > 100) {
-            Health = 100;
+        if ((getHealth() + 25) > 100) {
+            setHealth(100);
         } else
-            setHealth(Health + 25);
+            setHealth(getHealth() + 25);
     }
 
     @Override
@@ -30,42 +31,10 @@ public class Paladin extends Hero implements Healer, PhysAttack {
     }
 
     @Override
-    public void physicalAttack(Hero hero) {
-        if (hero.getPhysDef() == 0) {
-            hero.setHealth(hero.getHealth() - physAtt);
-        } else
-            hero.setHealth((int) (hero.getHealth() - ((1 - hero.getPhysDef()) * physAtt)));
-
-        if (hero.getHealth() < 0) {
-            hero.setHealth(0);
-        }
-    }
-
-    @Override
     public String toString() {
         return "Paladin{" +
-                "Health=" + Health +
+                "Health=" + getHealth() +
                 '}';
-    }
-
-    @Override
-    public double getMagicDef() {
-        return magicDef;
-    }
-
-    @Override
-    public double getPhysDef() {
-        return physDef;
-    }
-
-    @Override
-    public void setHealth(int health) {
-        this.Health = health;
-    }
-
-    @Override
-    public int getHealth() {
-        return Health;
     }
 }
 
