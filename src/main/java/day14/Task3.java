@@ -2,6 +2,7 @@ package day14;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +22,11 @@ public class Task3 {
                 int age = Integer.parseInt(str.substring(str.indexOf(" ") + 1));
                 String name = str.substring(0, str.indexOf(" "));
                 if (age < 0) {
-                    System.out.println("Некорректный входной файл");
+                    try {
+                        throw new IOException();
+                    }catch (IOException e){
+                        System.out.println("Некорректный входной файл");
+                    }
                     break;
                 } else nameAndAgePerson.add(new Person(name, age));
             }

@@ -2,6 +2,7 @@ package day14;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Task1 {
@@ -20,7 +21,11 @@ public class Task1 {
                 count++;
             }
             if (count != 10) {
-                System.out.println("Некорректный входной файл");
+                try {
+                    throw new IOException();
+                }catch (IOException e){
+                    System.out.println("Некорректный входной файл");
+                }
             } else System.out.println(sum);
             scanner.close();
         } catch (FileNotFoundException e) {
