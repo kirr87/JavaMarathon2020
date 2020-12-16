@@ -6,11 +6,12 @@
 //import org.junit.jupiter.api.Test;
 //
 //import java.io.File;
+//import java.io.FileNotFoundException;
 //
 //class Day16Task1Test extends AbstractTest {
 //
 //    @Test
-//    void test1() {
+//    void test1() throws FileNotFoundException {
 //        File file = new File("src/test/resources/D16T1_1.txt");
 //        Task1.printResult(file);
 //        Assertions.assertEquals("23.285714285714285 --> 23,286", getOutput(),
